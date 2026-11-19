@@ -9,7 +9,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          submodules: recursive
+       
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
