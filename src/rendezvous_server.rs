@@ -46,11 +46,18 @@ fn check_connection_allowed(from_id: &str, to_id: &str) -> bool {
         "http://127.0.0.1:5000/api/authorize?from={}&to={}",
         from_id, to_id
     );
-    match reqwest::blocking::get(&url) {
+    let client = match reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(3))
+        .build()
+    {
+        Ok(c) => c,
+        Err(_) => return false,
+    };
+    match client.get(&url).send() {
         Ok(resp) => resp.status().is_success(),
         Err(e) => {
             log::error!("Auth API unreachable: {}", e);
-            false // در صورت قطع API، اتصال را رد کن
+            false
         }
     }
 }
