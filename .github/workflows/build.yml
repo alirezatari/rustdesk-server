@@ -14,7 +14,7 @@ jobs:
        
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: stable
+          toolchain: "1.84.0"
           targets: x86_64-pc-windows-msvc
 
       - uses: Swatinem/rust-cache@v2
