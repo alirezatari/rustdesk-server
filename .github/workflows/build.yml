@@ -6,7 +6,6 @@ on:
 
 env:
   RUST_MIN_STACK: "33554432"
-  RUSTFLAGS: "-C target-feature=-crt-static"
 
 jobs:
   build:
@@ -17,6 +16,8 @@ jobs:
           submodules: recursive
 
       - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.86.0"
 
       - uses: Swatinem/rust-cache@v2
 
