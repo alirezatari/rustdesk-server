@@ -71,7 +71,7 @@ exclude = ["ui"]
 #https://github.com/johnthagen/min-sized-rust
 #https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles
 [profile.release]
-opt-level = 1
+opt-level = 0
 lto = false
 codegen-units = 16
 panic = 'abort'
